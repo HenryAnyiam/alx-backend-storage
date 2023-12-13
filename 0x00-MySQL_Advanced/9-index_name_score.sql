@@ -1,3 +1,3 @@
 -- Create index for table
 
-CREATE INDEX idx_name_first on names (name(1), score);
+CREATE INDEX idx_name_first_score on names (name(1), score);
