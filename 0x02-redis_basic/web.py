@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """ implement a web cache and tracker"""
+
+
 import redis
 import requests
 from functools import wraps
@@ -24,7 +26,7 @@ def count_request(method: Callable) -> Callable:
             return cache.decode('utf-8')
         else:
             html = method(url)
-            _redis.setex(f"count:{url}", 10, html)
+            _redis.setex("count:", 10, html)
         return html
 
     return wrapper
