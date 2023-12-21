@@ -1,0 +1,3 @@
+// deletes document with match name="Holberton school"
+
+db.school.remove({"name": "Holberton school"});
