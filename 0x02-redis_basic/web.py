@@ -15,10 +15,9 @@ def count_request(method: Callable) -> Callable:
     """tracks number of time a URL was accessed in the key"""
 
     @wraps(method)
-    def wrapper(*args, **kwargs):
+    def wrapper(url):
         """Wrapper function"""
 
-        url = str(*args)
         _redis.incr(f"count:{url}")
         cache = _redis.get(f"cached:{url}")
 
