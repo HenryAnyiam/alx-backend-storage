@@ -26,7 +26,7 @@ def count_request(method: Callable) -> Callable:
             return cache.decode('utf-8')
         else:
             html = method(url)
-            _redis.setex("count:", 10, html)
+            _redis.setex(f"count:{url}", 10, html)
         return html
 
     return wrapper
@@ -38,3 +38,7 @@ def get_page(url: str) -> str:
 
     result = requests.get(url)
     return result.text
+
+
+if __name__ == "__main__":
+    get_page("http://slowwly.robertomurray.co.uk")
